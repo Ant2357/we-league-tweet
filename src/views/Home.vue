@@ -31,6 +31,7 @@
                   <div class="tabs is-boxed">
                     <ul>
                       <li :class="{ 'is-active': appState.activeTab === 'aa' }"><a @click="appState.activeTab = 'aa'">AA</a></li>
+                      <li :class="{ 'is-active': appState.activeTab === 'clubAA' }"><a @click="appState.activeTab = 'clubAA'">クラブAA</a></li>
                     </ul>
                   </div>
                   <div class="tab-contents">
@@ -39,6 +40,20 @@
                       <div class="buttons">
                         <button
                           v-for="t in templateState.msgs" :key="t.label"
+                          type="button"
+                          class="button is-small"
+                          @click="updateTweet(tweetState.tweetMsg + t.msg, tweetState.hashtags)"
+                        >
+                          {{ t.label }}
+                        </button>
+                      </div>
+                    </div>
+
+                    <div class="content" :class="{ 'is-active': appState.activeTab === 'clubAA' }">
+
+                      <div class="buttons">
+                        <button
+                          v-for="t in templateState.clubAA" :key="t.label"
                           type="button"
                           class="button is-small"
                           @click="updateTweet(tweetState.tweetMsg + t.msg, tweetState.hashtags)"
